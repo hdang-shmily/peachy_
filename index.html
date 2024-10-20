@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Ngày Phụ Nữ Việt Nam 20/10</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            color: #880e4f;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        /* Phong bì */
+        .envelope {
+            position: relative;
+            width: 400px;
+            height: 250px;
+            background-color: #ff80ab;
+            margin: 0 auto;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        /* Nắp phong bì */
+        .envelope-lid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 125px;
+            background-color: #f06292;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            transition: transform 0.5s ease-in-out;
+            transform-origin: top;
+        }
+
+        /* Hiệu ứng lật nắp phong bì */
+        .envelope.opened .envelope-lid {
+            transform: rotateX(-180deg); /* Chỉ lật nắp phong bì */
+        }
+
+        /* Lá thư */
+        .letter {
+            width: 380px;
+            height: 240px;
+            background-color: #fff;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: -1;
+        }
+
+        /* Hiển thị lá thư khi phong bì mở */
+        .letter.show {
+            opacity: 1;
+        }
+
+        /* Lời chúc */
+        p {
+            font-size: 24px;
+            display: none; /* Ẩn lời chúc ban đầu */
+        }
+
+        /* Lời chúc hiển thị khi lá thư mở */
+        .letter.show p {
+            display: block;
+            position: relative;
+        }
+
+        /* Hoa trang trí xung quanh */
+        .flower-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .flower {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #ff80ab;
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        /* Hiệu ứng di chuyển hoa */
+        .flower:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-duration: 5s;
+        }
+
+        .flower:nth-child(2) {
+            top: 10%;
+            left: 80%;
+            animation-duration: 6s;
+            animation-delay: 1s;
+        }
+
+        .flower:nth-child(3) {
+            top: 80%;
+            left: 20%;
+            animation-duration: 4s;
+            animation-delay: 2s;
+        }
+
+        .flower:nth-child(4) {
+            top: 80%;
+            left: 70%;
+            animation-duration: 7s;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+
+            50% {
+                transform: translateY(-50px) translateX(20px);
+            }
+
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        /* Trái tim bay lên */
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 80%, 18% 100%, 0% 38%);
+            animation: rise 4s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        .heart:nth-child(1) {
+            left: 50%;
+            animation-delay: 0s;
+        }
+
+        .heart:nth-child(2) {
+            left: 40%;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(3) {
+            left: 60%;
+            animation-delay: 2s;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -50px;
+                opacity: 0;
+                transform: scale(0.5) rotate(0deg);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 100%;
+                opacity: 0;
+                transform: scale(1) rotate(360deg);
+            }
+
+        footer {
+            margin-top: 50px;
+            font-size: 18px;
+        }
+
+        /* Phần nhập tên */
+        .input-container {
+            margin: 20px 0;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 2px solid #880e4f;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #880e4f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ad1457;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chào Mừng Bạn</h1>
+    <p>Hãy nhập tên của bạn để nhận lời chúc đặc biệt nhân ngày Phụ Nữ Việt Nam 20/10!</p>
+
+    <div class="input-container">
+        <form id="nameForm" action="#" onsubmit="return getName(event)">
+            <input type="text" name="name" placeholder="Nhập tên của bạn" required>
+            <button type="submit">Tiếp Tục</button>
+        </form>
+    </div>
+
+    <!-- Phần phong bì -->
+    <div class="envelope" onclick="openEnvelope()">
+        <div class="envelope-lid"></div>
+        <div class="letter" id="letter">
+            <p id="greetingMessage">Chúc bạn luôn mạnh khỏe, xinh đẹp và thành công trong cuộc sống!</p>
+        </div>
+    </div>
+
+    <div class="flower-container">
+        <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div>
+    </div>
+
+    <div class="heart-container">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Bởi Tôi</p>
+    </footer>
+
+    <script>
+        // Hàm lấy tên và điều hướng đến phần chúc mừng
+        function getName(event) {
+            event.preventDefault(); // Ngăn không cho form gửi
+            const name = event.target.name.value; // Lấy giá trị tên
+            // Chuyển hướng với tên trong URL
+            window.location.href = `#name=${encodeURIComponent(name)}`;
+        }
+
+        // Hàm mở phong bì và hiển thị lá thư
+        function openEnvelope() {
+            const envelope = document.querySelector('.envelope');
+            const letter = document.getElementById("letter");
+            const hearts = document.querySelectorAll(".heart");
+
+            envelope.classList.toggle('opened');
+            letter.classList.toggle('show');
+
+            // Hiệu ứng trái tim bay lên
+            hearts.forEach((heart, index) => {
+                setTimeout(() => {
+                    heart.style.animationPlayState = 'running';
+                }, index * 500); // Hiệu ứng trái tim lần lượt xuất hiện
+            });
+        }
+
+        // Lấy tên từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        const message = document.getElementById("greetingMessage");
+
+        if (name) {
+            message.innerHTML = "Chúc " + name + " an nhieu mau lon, lon xinh nhu hoa ngay cang dam dang";
+        } else {
+            message
