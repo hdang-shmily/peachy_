@@ -6,8 +6,8 @@
     <title>Chúc Mừng Ngày Phụ Nữ Việt Nam 20/10</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to right, #ffccf9, #fcc2ff, #a4f6ff);
             color: #880e4f;
             text-align: center;
             padding: 50px;
@@ -99,48 +99,60 @@
 
         .flower {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: #ff80ab;
+            width: 40px;
+            height: 40px;
+            background-color: #ffb3ff;
             border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             animation: float 6s infinite ease-in-out;
+            opacity: 0.8;
         }
 
         /* Hiệu ứng di chuyển hoa */
         .flower:nth-child(1) {
-            top: 10%;
-            left: 10%;
-            animation-duration: 5s;
+            top: 5%;
+            left: 15%;
+            animation-duration: 6s;
         }
 
         .flower:nth-child(2) {
-            top: 10%;
-            left: 80%;
-            animation-duration: 6s;
-            animation-delay: 1s;
+            top: 5%;
+            left: 75%;
+            animation-duration: 5s;
         }
 
         .flower:nth-child(3) {
-            top: 80%;
-            left: 20%;
-            animation-duration: 4s;
-            animation-delay: 2s;
+            top: 85%;
+            left: 10%;
+            animation-duration: 7s;
         }
 
         .flower:nth-child(4) {
-            top: 80%;
-            left: 70%;
-            animation-duration: 7s;
-            animation-delay: 0.5s;
+            top: 85%;
+            left: 80%;
+            animation-duration: 8s;
         }
 
+        .flower:nth-child(5) {
+            top: 30%;
+            left: 40%;
+            animation-duration: 9s;
+        }
+
+        .flower:nth-child(6) {
+            top: 50%;
+            left: 60%;
+            animation-duration: 6s;
+        }
+
+        /* Các hoa di chuyển không cản trở nội dung */
         @keyframes float {
             0% {
                 transform: translateY(0) translateX(0);
             }
 
             50% {
-                transform: translateY(-50px) translateX(20px);
+                transform: translateY(-30px) translateX(20px);
             }
 
             100% {
@@ -154,7 +166,7 @@
             bottom: -50px;
             width: 20px;
             height: 20px;
-            background-color: red;
+            background-color: #ff4d4d;
             clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 80%, 18% 100%, 0% 38%);
             animation: rise 4s infinite ease-in-out;
             opacity: 0;
@@ -191,56 +203,31 @@
                 opacity: 0;
                 transform: scale(1) rotate(360deg);
             }
+        }
 
         footer {
             margin-top: 50px;
             font-size: 18px;
         }
 
-        /* Phần nhập tên */
-        .input-container {
-            margin: 20px 0;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            font-size: 18px;
-            border-radius: 5px;
-            border: 2px solid #880e4f;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: #880e4f;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #ad1457;
+        /* Thông tin người làm web */
+        .creator-info {
+            font-size: 14px;
+            color: #880e4f;
+            margin-top: 10px;
         }
     </style>
 </head>
+
 <body>
-
-    <h1>Chào Mừng Bạn</h1>
-    <p>Hãy nhập tên của bạn để nhận lời chúc đặc biệt nhân ngày Phụ Nữ Việt Nam 20/10!</p>
-
-    <div class="input-container">
-        <form id="nameForm" action="#" onsubmit="return getName(event)">
-            <input type="text" name="name" placeholder="Nhập tên của bạn" required>
-            <button type="submit">Tiếp Tục</button>
-        </form>
-    </div>
 
     <!-- Phần phong bì -->
     <div class="envelope" onclick="openEnvelope()">
         <div class="envelope-lid"></div>
         <div class="letter" id="letter">
             <p id="greetingMessage">Chúc bạn luôn mạnh khỏe, xinh đẹp và thành công trong cuộc sống!</p>
+            <!-- Thông tin người làm web hiển thị dưới lá thư -->
+            <div class="creator-info">hdang</div>
         </div>
     </div>
 
@@ -248,6 +235,8 @@
         <div class="flower"></div>
         <div class="flower"></div>
         <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div> <!-- Thêm nhiều bông hoa -->
         <div class="flower"></div>
     </div>
 
@@ -258,18 +247,10 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Bởi Tôi</p>
+        <p>&copy; haidang</p>
     </footer>
 
     <script>
-        // Hàm lấy tên và điều hướng đến phần chúc mừng
-        function getName(event) {
-            event.preventDefault(); // Ngăn không cho form gửi
-            const name = event.target.name.value; // Lấy giá trị tên
-            // Chuyển hướng với tên trong URL
-            window.location.href = `#name=${encodeURIComponent(name)}`;
-        }
-
         // Hàm mở phong bì và hiển thị lá thư
         function openEnvelope() {
             const envelope = document.querySelector('.envelope');
@@ -293,6 +274,10 @@
         const message = document.getElementById("greetingMessage");
 
         if (name) {
-            message.innerHTML = "Chúc " + name + " an nhieu mau lon, lon xinh nhu hoa ngay cang dam dang";
+            message.innerHTML = "Chúc " + name + " an nhiều mau lớn, lớn xinh như hoa, ngày càng đảm đang!";
         } else {
-            message
+            message.innerHTML = "20/10 tui chuc Bảo Trân an nhieu mau lon, lon xinh nhu hoa, ngay cang dam dang!";
+        }
+    </script>
+</body>
+</html>
